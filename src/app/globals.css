@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #e8ede6;
+  --foreground: #0b1a16;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-pareto-bg: #e8ede6;
+  --color-pareto-nav: #f5f8f5;
+  --color-pareto-text: #0b1a16;
+  --color-pareto-mint: #80ffdb;
+  --color-pareto-card-blue: #dce6e9;
+  --color-pareto-card-green: #d8e2d7;
+  --color-pareto-card-slate: #e0e7eb;
+  --color-pareto-card-blue-hover: #c8d8de;
+  --color-pareto-icon-bg: #c5d8de;
+  --color-pareto-accent: #4a9d8e;
+  --color-pareto-wave: #a8c3b8;
+  --color-pareto-footer: #09100c;
+  --color-pareto-footer-text: #87948d;
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-mono: var(--font-space-mono);
+  --font-serif: var(--font-playfair);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-pareto-bg);
+  color: var(--color-pareto-text);
+  font-family: var(--font-space-mono), monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-serif {
+  font-family: var(--font-playfair), serif;
+}
+
+.pareto-card {
+  border: 1px solid rgba(11, 26, 22, 0.1);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8ede6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8c9c0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8c3b8;
 }

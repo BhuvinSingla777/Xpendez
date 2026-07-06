@@ -1,0 +1,16 @@
+export const THEME = {
+  bg: "#E8EDE6",
+  nav: "#F5F8F5",
+  text: "#0B1A16",
+  mint: "#80FFDB",
+  cardBlue: "#DCE6E9",
+  cardGreen: "#D8E2D7",
+  cardSlate: "#E0E7EB",
+  cardBlueHover: "#C8D8DE",
+  iconBg: "#C5D8DE",
+  accent: "#4A9D8E",
+  wave: "#A8C3B8",
+  border: "rgba(11, 26, 22, 0.1)",
+  footerBg: "#09100C",
+  footerText: "#87948D",
+} as const;
