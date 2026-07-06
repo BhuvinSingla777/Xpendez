@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Playfair_Display, Space_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -22,9 +22,22 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Xpendez — Radically transforming expenses, automated",
+  title: "Xpendez — Smart and Offline Expense Tracking",
   description:
-    "Building a centralized infrastructure of scalable financial controls that displace legacy spreadsheet workflows.",
+    "Xpendez is an offline-first expense and budget tracker app for Android. Track spending, manage budgets, and analyze expenses securely.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/site.webmanifest",
+};
+
+export const viewport: Viewport = {
+  themeColor: "#E8EDE6",
 };
 
 export default function RootLayout({

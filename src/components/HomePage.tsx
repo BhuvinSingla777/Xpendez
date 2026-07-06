@@ -4,9 +4,15 @@ import { useEffect, useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/HeroSection";
 import { ProductSection } from "@/components/ProductSection";
+import { FeaturesGridSection } from "@/components/FeaturesGridSection";
 import { ManageSection } from "@/components/ManageSection";
 import { TrackSection } from "@/components/TrackSection";
 import { FeaturesSection } from "@/components/FeaturesSection";
+import { PrivacySection } from "@/components/PrivacySection";
+import { PricingSection } from "@/components/PricingSection";
+import { FAQSection } from "@/components/FAQSection";
+import { SupportSection } from "@/components/SupportSection";
+import { DownloadSection } from "@/components/DownloadSection";
 import { Footer } from "@/components/Footer";
 
 export function HomePage() {
@@ -23,9 +29,15 @@ export function HomePage() {
       <Navbar isScrolled={isScrolled} />
       <HeroSection />
       <ProductSection />
+      <FeaturesGridSection />
       <ManageSection />
       <TrackSection />
       <FeaturesSection />
+      <PrivacySection />
+      <PricingSection />
+      <FAQSection />
+      <SupportSection />
+      <DownloadSection />
       <Footer />
     </div>
   );

@@ -2,10 +2,20 @@
 
 import { Shield } from "lucide-react";
 import { MintButton } from "@/components/ui/MintButton";
+import { LINKS } from "@/lib/site-data";
 
 interface NavbarProps {
   isScrolled: boolean;
 }
+
+const navLinks = [
+  { href: "#features", label: "Features" },
+  { href: "#release-info", label: "What's New" },
+  { href: "#how-it-works", label: "How It Works" },
+  { href: "#pricing", label: "Pricing" },
+  { href: "#faq", label: "FAQ" },
+  { href: "#support", label: "Help Center" },
+];
 
 export function Navbar({ isScrolled }: NavbarProps) {
   return (
@@ -17,28 +27,30 @@ export function Navbar({ isScrolled }: NavbarProps) {
             : "bg-pareto-nav/80 backdrop-blur-sm"
         }`}
       >
-        <div className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-2">
           <div className="w-8 h-8 bg-pareto-text rounded-lg flex items-center justify-center">
             <Shield size={18} className="text-pareto-bg" />
           </div>
           <span className="font-serif text-2xl font-semibold tracking-tight text-pareto-text">
             Xpendez
           </span>
+        </a>
+
+        <div className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-pareto-text">
+          {navLinks.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="hover:opacity-50 transition-opacity"
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        <div className="hidden md:flex items-center gap-12 text-xs font-bold uppercase tracking-widest text-pareto-text">
-          <a href="#product" className="hover:opacity-50 transition-opacity">
-            Product
-          </a>
-          <a href="#features" className="hover:opacity-50 transition-opacity">
-            Features
-          </a>
-          <a href="#workflow" className="hover:opacity-50 transition-opacity">
-            Workflow
-          </a>
-        </div>
-
-        <MintButton>Enter App</MintButton>
+        <a href={LINKS.android} target="_blank" rel="noopener noreferrer">
+          <MintButton>Download</MintButton>
+        </a>
       </div>
     </nav>
   );

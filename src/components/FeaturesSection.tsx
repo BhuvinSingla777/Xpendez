@@ -1,63 +1,72 @@
-import { Activity, ArrowUpRight, Settings, Users, Zap } from "lucide-react";
-import { FadeIn } from "@/components/FadeIn";
+"use client";
 
-const collapsedFeatures = [
-  { icon: Activity, title: "End-to-end transparency", bg: "bg-pareto-card-slate" },
-  { icon: Users, title: "Built for Enterprise", bg: "bg-pareto-card-green" },
-  { icon: Settings, title: "Flexible configuration", bg: "bg-pareto-card-slate" },
-];
+import { useState } from "react";
+import { ArrowUpRight, ChevronDown, ChevronUp } from "lucide-react";
+import { FadeIn } from "@/components/FadeIn";
+import { principles } from "@/lib/site-data";
 
 export function FeaturesSection() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
-    <section id="features" className="py-32 px-8 border-t border-pareto-text/10">
+    <section className="py-32 px-8 border-t border-pareto-text/10">
       <div className="max-w-[1200px] mx-auto">
         <FadeIn>
           <div className="grid lg:grid-cols-12 gap-16">
             <div className="lg:col-span-4 sticky top-32 self-start">
               <div className="text-[10px] uppercase tracking-widest text-pareto-accent font-bold mb-4">
-                Our Advantage
+                {principles.label}
               </div>
               <h2 className="font-serif text-4xl text-pareto-text mb-6">
-                Choose Efficiency
+                {principles.title}
               </h2>
               <p className="text-sm text-pareto-text/70 font-mono">
-                Infrastructure built for the future,
-                <br /> available today.
+                {principles.description}
               </p>
             </div>
 
             <div className="lg:col-span-8 space-y-4">
-              <div className="bg-pareto-card-green pareto-card p-8 transition-all">
-                <div className="flex justify-between items-center mb-6">
-                  <div className="flex items-center gap-4">
-                    <Zap size={24} className="text-pareto-text" />
-                    <h3 className="font-serif text-2xl text-pareto-text">
-                      Lower operational drag
-                    </h3>
-                  </div>
-                </div>
-                <p className="text-xs text-pareto-text/70 leading-relaxed font-mono">
-                  A centralized infrastructure that compresses the costs of
-                  traditional off-platform management and uses intelligent
-                  routing to reduce the intermediary delays and complexity of
-                  finance operations.
-                </p>
-              </div>
+              {principles.items.map((item, index) => {
+                const isOpen = openIndex === index;
+                const bg =
+                  index % 2 === 0
+                    ? "bg-pareto-card-green"
+                    : "bg-pareto-card-slate";
 
-              {collapsedFeatures.map(({ icon: Icon, title, bg }) => (
-                <div
-                  key={title}
-                  className={`${bg} pareto-card p-6 flex justify-between items-center hover:bg-pareto-card-blue-hover cursor-pointer transition-colors`}
-                >
-                  <div className="flex items-center gap-4">
-                    <Icon className="text-pareto-text" size={24} />
-                    <h3 className="font-serif text-xl text-pareto-text">
-                      {title}
-                    </h3>
+                return (
+                  <div
+                    key={item.title}
+                    className={`${bg} pareto-card p-6 cursor-pointer transition-colors hover:bg-pareto-card-blue-hover`}
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                  >
+                    <div className="flex justify-between items-start gap-4">
+                      <div className="flex items-start gap-4">
+                        <span className="text-[10px] uppercase tracking-widest text-pareto-accent font-bold mt-1">
+                          {item.number}
+                        </span>
+                        <div>
+                          <h3 className="font-serif text-xl text-pareto-text">
+                            {item.title}
+                          </h3>
+                          <p className="text-xs text-pareto-text/50 font-mono mt-1">
+                            {item.subtitle}
+                          </p>
+                        </div>
+                      </div>
+                      {isOpen ? (
+                        <ChevronUp size={20} className="text-pareto-text/50 shrink-0" />
+                      ) : (
+                        <ArrowUpRight size={20} className="text-pareto-text/50 shrink-0" />
+                      )}
+                    </div>
+                    {isOpen && (
+                      <p className="text-xs text-pareto-text/70 leading-relaxed font-mono mt-4 ml-10">
+                        {item.description}
+                      </p>
+                    )}
                   </div>
-                  <ArrowUpRight size={20} className="text-pareto-text/50" />
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </FadeIn>

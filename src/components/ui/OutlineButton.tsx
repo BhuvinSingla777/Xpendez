@@ -12,7 +12,7 @@ export function OutlineButton({
 }: OutlineButtonProps) {
   return (
     <button
-      className={`border border-pareto-text text-pareto-text font-mono font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-full hover:bg-pareto-text hover:text-pareto-bg transition-colors duration-300 ${className}`}
+      className={`border border-pareto-text text-pareto-text font-mono font-bold text-xs tracking-wider uppercase px-6 py-3 rounded-full hover:bg-pareto-text hover:text-pareto-bg transition-colors duration-300 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-pareto-text ${className}`}
       {...props}
     >
       {children}
